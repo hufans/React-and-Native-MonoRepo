@@ -1,8 +1,38 @@
-import React, { PureComponent } from 'react'
+import React, { Component } from 'react'
 import { StyleSheet, Text, View, Button } from 'react-native'
 import Gps from '@platform/gps-mobile'
 import logger from '@platform/analytics'
-export default class App extends PureComponent {
+
+
+interface State  {
+  gpsMessage: string,
+  haha:number,
+}
+
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#F5FCFF',
+  },
+  welcome: {
+    fontSize: 20,
+    textAlign: 'center',
+    margin: 10,
+  },
+  instructions: {
+    textAlign: 'center',
+    color: '#333333',
+    marginBottom: 5,
+  },
+});
+
+
+export default class App extends Component<{},State> {
+  gps:any;
+  
   constructor(props) {
     super(props)
     this.gps = new Gps()
@@ -39,16 +69,3 @@ export default class App extends PureComponent {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF'
-  },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10
-  }
-})
